@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import axios from "axios";
-
+import "./css/Nav.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import MobileNav from "./components/MobileNav.js";
+import DesktopNav from "./components/DesktopNav.js";
+import Home from "./components/Home.js";
+import About from "./components/About.js";
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    axios.get("/api")
-    .then((response) => {
-      setData(response?.data);
-      console.log(data.message);
-    });
-  }, []);
-
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>{data.message}</h1>
-      </header>
+      <Router>
+        <DesktopNav />
+        <MobileNav />
+        <Routes>
+          <Route path="/" exact component={Home}></Route>
+          <Route path="/about" component={About}></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
