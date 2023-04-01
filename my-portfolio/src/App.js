@@ -13,8 +13,8 @@ function App() {
         <DesktopNav />
         <MobileNav />
         <Routes>
-          <Route path="/" exact component={Home}></Route>
-          <Route path="/about" component={About}></Route>
+          <Route path="/" exact element={<Home/>}></Route>
+          <Route path="/about" element={<About/>}></Route>
         </Routes>
       </Router>
     </div>
